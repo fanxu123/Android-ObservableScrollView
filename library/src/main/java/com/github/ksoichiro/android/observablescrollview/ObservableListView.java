@@ -322,6 +322,13 @@ public class ObservableListView extends ListView implements Scrollable {
                     if (mPrevFirstVisibleChildHeight < 0) {
                         mPrevFirstVisibleChildHeight = 0;
                     }
+                    //Log.d(TAG, "onScrollChanged: mPrevScrolledChildrenHeight " + mPrevScrolledChildrenHeight + ", firstVisibleChild.getTop() " + firstVisibleChild.getTop() + ", firstVisiblePosition " + firstVisiblePosition);
+                    //Fix preScrolledChildren Height.
+                    if (firstVisiblePosition == 0) {
+                        //fix mPrevScrolledChildrenHeight when scroll to top
+                        mPrevScrolledChildrenHeight = 0;
+                    }
+
                     mScrollY = mPrevScrolledChildrenHeight - firstVisibleChild.getTop();
                     mPrevFirstVisiblePosition = firstVisiblePosition;
 
